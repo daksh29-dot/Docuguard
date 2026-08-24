@@ -1,0 +1,13 @@
+node_modules/
+
+.env
+
+.DS_Store
+
+contracts/out/
+
+contracts/cache/
+
+contracts/broadcast/
+
+frontend/dist/

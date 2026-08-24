@@ -1,0 +1,41 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+script = "script"
+
+solc_version = "0.8.24"
+optimizer = true
+optimizer_runs = 200
+
+# Gas reporting — captured for the PRD's "gas cost per milestone verification" success metric.
+gas_reports = ["DocuGuardMilestone"]
+
+remappings = [
+    "@openzeppelin/=lib/openzeppelin-contracts/",
+    "forge-std/=lib/forge-std/src/",
+]
+
+[fmt]
+line_length = 100
+tab_width = 4
+bracket_spacing = true
+int_types = "long"
+
+# ---------------------------------------------------------------------------
+# RPC endpoints. Base Sepolia is the primary target (lower gas, per the TRD);
+# Sepolia kept as a drop-in alternative — just point --rpc-url at "sepolia" instead.
+# Set actual URLs via env vars so no keys/URLs are committed to the repo.
+# ---------------------------------------------------------------------------
+[rpc_endpoints]
+base_sepolia = "${BASE_SEPOLIA_RPC_URL}"
+sepolia = "${SEPOLIA_RPC_URL}"
+anvil = "http://127.0.0.1:8545"
+
+# ---------------------------------------------------------------------------
+# Etherscan/Basescan verification — "judges love seeing a verified contract" (TRD §7).
+# ---------------------------------------------------------------------------
+[etherscan]
+base_sepolia = { key = "${BASESCAN_API_KEY}", chain = 84532, url = "https://api-sepolia.basescan.org/api" }
+sepolia = { key = "${ETHERSCAN_API_KEY}", chain = 11155111, url = "https://api-sepolia.etherscan.io/api" }

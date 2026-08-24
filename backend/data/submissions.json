@@ -1,0 +1,184 @@
+{
+  "submissions": {
+    "0xb9001d790f99e89f3c722ae7655ef1016c9543b6f196ebf23b1901213c14967d": {
+      "submissionHash": "0xb9001d790f99e89f3c722ae7655ef1016c9543b6f196ebf23b1901213c14967d",
+      "milestoneId": 2,
+      "contractId": "TENDER-2026-0143",
+      "receivedAt": "2026-08-22T13:07:07.057Z",
+      "requiredDocType": "delivery_invoice",
+      "extraction": {
+        "fields": {
+          "documentType": "delivery_invoice",
+          "itemName": "Rebar 12mm",
+          "quantity": 500,
+          "unit": "units",
+          "unitPriceUSD": 12,
+          "deliveryDate": "2026-08-21",
+          "invoiceOrDocNumber": "INV-99381",
+          "vendorNameOnDocument": "Steel & Supply Co.",
+          "photoDepictsClaimedItem": null,
+          "anomalies": []
+        },
+        "confidence": 1,
+        "failed": false,
+        "failureReason": null,
+        "notes": "Extraction succeeded with no noted anomalies.",
+        "raw": {
+          "modelUsed": "gemini-2.5-flash-lite",
+          "attempts": 1,
+          "lastRawText": "{\n  \"documentType\": \"delivery_invoice\",\n  \"anomalies\": [],\n  \"selfAssessedConfidence\": 1.0,\n  \"deliveryDate\": \"2026-08-21\",\n  \"invoiceOrDocNumber\": \"INV-99381\",\n  \"itemName\": \"Rebar 12mm\",\n  \"photoDepictsClaimedItem\": null,\n  \"quantity\": 500.0,\n  \"unit\": \"units\",\n  \"unitPriceUSD\": 12.00,\n  \"vendorNameOnDocument\": \"Steel & Supply Co.\"\n}"
+        }
+      },
+      "verdict": {
+        "pass": true,
+        "confidence": 1,
+        "checks": [
+          {
+            "id": "docType",
+            "pass": true,
+            "detail": "Expected delivery_invoice, got delivery_invoice"
+          },
+          {
+            "id": "quantity",
+            "pass": true,
+            "detail": "Expected >= 490, got 500"
+          }
+        ],
+        "timestamp": 1787404037,
+        "rulesHash": "0xcea381c82485cb443e141f504fac6966dcf360592aebcd89b625551fc6c933c4",
+        "submissionHash": "0xb9001d790f99e89f3c722ae7655ef1016c9543b6f196ebf23b1901213c14967d"
+      },
+      "attestation": {
+        "signature": "0x1ddaf6a6599ec3437107f58f19758ef83633912c8ec7450fffc6be512e90c4744645ab869841c95b819eec4fe8ba87ea5d2efd3c16f74442c6e092200c008d391b",
+        "signerAddress": "0x524C8dD7a888796C3eb05415c5359d0d1038447A"
+      },
+      "chain": {
+        "status": "failed",
+        "error": "execution reverted (unknown custom error)"
+      }
+    },
+    "0x3ec4cca62cefa2b013d928300543cff8903628d3d4721789fdf6149f6d73702c": {
+      "submissionHash": "0x3ec4cca62cefa2b013d928300543cff8903628d3d4721789fdf6149f6d73702c",
+      "milestoneId": 2,
+      "contractId": "TENDER-2026-0143",
+      "receivedAt": "2026-08-22T15:35:11.795Z",
+      "requiredDocType": "delivery_invoice",
+      "extraction": {
+        "fields": {
+          "documentType": "delivery_invoice",
+          "itemName": "Rebar 12mm",
+          "quantity": 350,
+          "unit": "units",
+          "unitPriceUSD": 15,
+          "deliveryDate": "2026-08-21",
+          "invoiceOrDocNumber": "INV-99382",
+          "vendorNameOnDocument": "Steel & Supply Co.",
+          "photoDepictsClaimedItem": null,
+          "anomalies": [
+            "Quantity 350 units fails the minimum 500 requirement"
+          ]
+        },
+        "confidence": 1,
+        "failed": false,
+        "failureReason": null,
+        "notes": "Extraction succeeded with 1 noted anomaly.",
+        "raw": {
+          "modelUsed": "gemini-2.5-flash-lite",
+          "attempts": 1,
+          "lastRawText": "{\n  \"documentType\": \"delivery_invoice\",\n  \"anomalies\": [\n    \"Quantity 350 units fails the minimum 500 requirement\"\n  ],\n  \"selfAssessedConfidence\": 1.0,\n  \"deliveryDate\": \"2026-08-21\",\n  \"invoiceOrDocNumber\": \"INV-99382\",\n  \"itemName\": \"Rebar 12mm\",\n  \"photoDepictsClaimedItem\": null,\n  \"quantity\": 350.0,\n  \"unit\": \"units\",\n  \"unitPriceUSD\": 15.00,\n  \"vendorNameOnDocument\": \"Steel & Supply Co.\"\n}"
+        }
+      },
+      "verdict": {
+        "pass": false,
+        "confidence": 1,
+        "checks": [
+          {
+            "id": "docType",
+            "pass": true,
+            "detail": "Expected delivery_invoice, got delivery_invoice"
+          },
+          {
+            "id": "quantity",
+            "pass": false,
+            "detail": "Expected >= 490, got 350"
+          }
+        ],
+        "timestamp": 1787412937,
+        "rulesHash": "0xcea381c82485cb443e141f504fac6966dcf360592aebcd89b625551fc6c933c4",
+        "submissionHash": "0x3ec4cca62cefa2b013d928300543cff8903628d3d4721789fdf6149f6d73702c"
+      },
+      "attestation": {
+        "signature": "0x86f889e14cb54dbbb9bd95e927a3cda5daa2a2c8b9d5b605a5ad9c2227e1da1664e41b63bc13d016e8f410adda9a470332b37d8ae9fbb5b4ac04ab848ebd9d7f1c",
+        "signerAddress": "0x524C8dD7a888796C3eb05415c5359d0d1038447A"
+      },
+      "chain": {
+        "status": "failed",
+        "error": "execution reverted (unknown custom error)"
+      }
+    },
+    "0xd8c76c305c77fda0924abe8b46b5b9ac5979a09ea35ea5f8aeb4f4da715c4cf5": {
+      "submissionHash": "0xd8c76c305c77fda0924abe8b46b5b9ac5979a09ea35ea5f8aeb4f4da715c4cf5",
+      "milestoneId": 2,
+      "contractId": "TENDER-2026-0143",
+      "receivedAt": "2026-08-22T15:36:41.640Z",
+      "requiredDocType": "delivery_invoice",
+      "extraction": {
+        "fields": {
+          "documentType": "delivery_invoice",
+          "itemName": "Rebar 12mm",
+          "quantity": 500,
+          "unit": "units",
+          "unitPriceUSD": 12,
+          "deliveryDate": "2026-08-21",
+          "invoiceOrDocNumber": "INV-99381",
+          "vendorNameOnDocument": "Steel & Supply Co.",
+          "photoDepictsClaimedItem": null,
+          "anomalies": []
+        },
+        "confidence": 1,
+        "failed": false,
+        "failureReason": null,
+        "notes": "Extraction succeeded with no noted anomalies.",
+        "raw": {
+          "modelUsed": "gemini-2.5-flash-lite",
+          "attempts": 1,
+          "lastRawText": "{\n  \"documentType\": \"delivery_invoice\",\n  \"anomalies\": [],\n  \"selfAssessedConfidence\": 1.0,\n  \"deliveryDate\": \"2026-08-21\",\n  \"invoiceOrDocNumber\": \"INV-99381\",\n  \"itemName\": \"Rebar 12mm\",\n  \"photoDepictsClaimedItem\": null,\n  \"quantity\": 500.0,\n  \"unit\": \"units\",\n  \"unitPriceUSD\": 12.00,\n  \"vendorNameOnDocument\": \"Steel & Supply Co.\"\n}"
+        }
+      },
+      "verdict": {
+        "pass": true,
+        "confidence": 1,
+        "checks": [
+          {
+            "id": "docType",
+            "pass": true,
+            "detail": "Expected delivery_invoice, got delivery_invoice"
+          },
+          {
+            "id": "quantity",
+            "pass": true,
+            "detail": "Expected >= 490, got 500"
+          }
+        ],
+        "timestamp": 1787413005,
+        "rulesHash": "0xcea381c82485cb443e141f504fac6966dcf360592aebcd89b625551fc6c933c4",
+        "submissionHash": "0xd8c76c305c77fda0924abe8b46b5b9ac5979a09ea35ea5f8aeb4f4da715c4cf5"
+      },
+      "attestation": {
+        "signature": "0xb36efe5067b09153c86e5511132b3eb5b73360fa90b3735bca25549cdfba34bb6cd37bb9fc7406f274ecd8a9f2f1014029fcfdc362ccc27a4e2ff04cce0ee3741c",
+        "signerAddress": "0x524C8dD7a888796C3eb05415c5359d0d1038447A"
+      },
+      "chain": {
+        "status": "failed",
+        "error": "execution reverted (unknown custom error)"
+      }
+    }
+  },
+  "byMilestone": {
+    "2": [
+      "0xb9001d790f99e89f3c722ae7655ef1016c9543b6f196ebf23b1901213c14967d",
+      "0x3ec4cca62cefa2b013d928300543cff8903628d3d4721789fdf6149f6d73702c",
+      "0xd8c76c305c77fda0924abe8b46b5b9ac5979a09ea35ea5f8aeb4f4da715c4cf5"
+    ]
+  }
+}

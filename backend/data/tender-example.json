@@ -1,0 +1,54 @@
+{
+  "_meta": {
+    "note": "JSON has no comment syntax, so this _meta block documents intent inline. This entire file is ignored by rulesHash computation except the exact fields listed per-milestone under `rulesHashFields` — see rulesEngine.js's computeRulesHash().",
+    "rulesHashScheme": "keccak256(utf8Bytes(canonicalString)) where canonicalString is the pipe-delimited format already committed on-chain by contracts/script/Deploy.s.sol for the demo milestone. This file's milestone id 2 fields were chosen to reproduce that exact string byte-for-byte — do not edit milestone 2's contractId/expectedItem/expectedQty/unit/unitPriceUSD/tolerances without also updating Deploy.s.sol, or verifyAndAdvance() will revert with RulesHashMismatch.",
+    "canonicalStringFormat": "{contractId}|milestone:{milestoneId}|item:{expectedItem}|qty:{expectedQty}|unit:{unit}|unitPriceUSD:{unitPriceUSD, 2 decimals}|tolQtyPct:{tolQtyPct}|tolDeliveryDays:{tolDeliveryDays}"
+  },
+  "contractId": "TENDER-2026-0143",
+  "vendor": "Rebar Supply Co.",
+  "procuringEntity": "City of Springfield — Public Works",
+  "paymentToken": "USDG",
+  "paymentTokenDecimals": 6,
+  "milestones": [
+    {
+      "milestoneId": 1,
+      "description": "Site mobilization — contractor confirmed on-site and staged for Phase 2 rebar delivery.",
+      "expectedItem": "Site mobilization",
+      "expectedQty": 1,
+      "unit": "lumpsum",
+      "unitPriceUSD": 0,
+      "requiredDocType": "mobilization_report",
+      "isPhotoRequired": true,
+      "expectedDeliveryDate": "2026-03-10",
+      "tolerances": {
+        "qtyPct": 0,
+        "deliveryDays": 3
+      },
+      "trancheUSDG": "1000000000",
+      "rulesHashFields": ["contractId", "milestoneId", "expectedItem", "expectedQty", "unit", "unitPriceUSD", "tolerances.qtyPct", "tolerances.deliveryDays"]
+    },
+    {
+      "milestoneId": 2,
+      "description": "Phase 2 rebar delivery — 500 units of 12mm rebar delivered to site, per tender line item.",
+      "expectedItem": "Rebar 12mm",
+      "expectedQty": 500,
+      "unit": "units",
+      "unitPriceUSD": 12.00,
+      "requiredDocType": "delivery_invoice",
+      "isPhotoRequired": false,
+      "expectedDeliveryDate": "2026-04-15",
+      "tolerances": {
+        "qtyPct": 2,
+        "deliveryDays": 5
+      },
+      "trancheUSDG": "6000000000",
+      "rulesHashFields": ["contractId", "milestoneId", "expectedItem", "expectedQty", "unit", "unitPriceUSD", "tolerances.qtyPct", "tolerances.deliveryDays"]
+    }
+  ],
+  "failSafeDefault": {
+    "pass": false,
+    "confidence": 0,
+    "reason": "extraction_failed_or_below_confidence_threshold",
+    "note": "Applied by rulesEngine.js whenever extract.js returns failed:true, or whenever extraction.confidence falls below rulesEngine.js's MIN_CONFIDENCE threshold. Never overridden to pass:true — see README's fail-safe-not-fail-open section."
+  }
+}
